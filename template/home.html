@@ -1,0 +1,20 @@
+<!-- create a div to set heading and background color -->
+<div style="background-color:rgba(0, 0, 0, 0.5)">
+    <div class="container text-center">
+        <center>
+            <h1 style="color:white">INDIAN PREMIER LEAGUE</h1></center>
+    </div>
+</div>
+<!-- create a div to view all slides in carousel 3d model -->
+<div carousel3d ng-model="slides" options="options">
+    <div carousel3d-slide ng-repeat="slide in slides">
+        <figure>
+          <!-- link to next page -->
+          <!-- use ng-if to compare the currentIndex of image with the carousel index  -->
+            <a ng-if="carousel3d.getCurrentIndex() === $index"
+            ui-sref="player({teamname:slide.url})"><img ng-src="{{slide.src}}" alt="" /></a>
+            <img ng-if="carousel3d.getCurrentIndex() !== $index" ng-src="{{slide.src}}" alt="" />
+            <figcaption ng-bind="slide.caption"></figcaption>
+        </figure>
+    </div>
+</div>

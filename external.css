@@ -1,0 +1,26 @@
+/*css sile containing different styles*/
+
+body {
+    background-image: url(images/ipl3.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+div.modal-content {
+    width: 370px;
+    margin: auto;
+    border: 3px solid #73AD21;
+}
+.imgSet{
+  max-width:100%;
+  max-height:auto;
+  min-width:100%;
+  min-height:auto;
+  /*min-width:230px;
+  min-height:260px;*/
+}

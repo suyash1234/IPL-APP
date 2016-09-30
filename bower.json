@@ -1,0 +1,26 @@
+{
+  "name": "IPL APP",
+  "authors": [
+    "suyash <nandasuyash@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-carousel-3d": "*",
+    "bootstrap": "^3.3.7",
+    "javascript-detect-element-resize": "*",
+    "modernizr": "*",
+    "angular-ui-router": "^0.3.1",
+    "waitForImages": "*"
+  }
+}

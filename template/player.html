@@ -1,0 +1,18 @@
+<!-- use nav bar to display items and move back to the home page -->
+<nav class="navbar navbar-default" style="background-color:#00BFFF">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li> <a ui-sref="home">Home</a></li>
+            <li><a ui-sref="home">TeamDetails</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- closing of nav bar -->
+<!-- use div in which data display in the following grid format -->
+<div class="w3-container">
+    <div ng-repeat="x in data" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <!-- this card-image directive stores all the data -->
+        <card-image data="x" index="$index"></card-image>
+    </div>
+</div>
+<!-- closing of div -->

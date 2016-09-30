@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- different source files used in this project -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    <link rel="stylesheet" href="bower_components/angular-carousel-3d/dist/carousel-3d.css" media="screen" title="no title">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="external.css">
+    <title>IPL Project</title>
+</head>
+<!-- Starting of body tag -->
+<!-- creating a app named myApp -->
+
+<body ng-app="myApp">
+    <!-- use ui-view to display our view in this div -->
+    <ui-view></ui-view>
+</body>
+
+<script src="bower_components/angular-swipe/dist/angular-swipe.js"></script>
+<script src="bower_components/angular-carousel-3d/dist/carousel-3d.js"></script>
+<!-- closing of body tag -->
+<!-- source path to the following controllers -->
+<script src="app.js"></script>
+<script src="firebaseConfig.js"></script>
+<script src="controller/home.js"></script>
+<script src="controller/player.js"></script>
+<script src="controller/imageCtrl.js"></script>
+<script src="directive/cardImage.js"></script>
+
+</html>
+<!-- closing of html -->

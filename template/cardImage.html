@@ -1,0 +1,49 @@
+<!-- create a div to arrange our data in cards format -->
+<div class="w3-card-4" style="width:auto;margin:10px">
+    <!-- header showing the name of the player -->
+    <header class="w3-container w3-blue">
+        <center>
+            <h4>{{data.player_name}}</h4></center>
+    </header>
+    <!-- this div having container used to display images of players -->
+    <div class="w3-container" ng-controller="imgCtrl" align="center">
+        <img src="" id="{{data.player_img_url}}" name="{{getUrl(data.player_img_url)}}"
+        class="img-responsive imgSet" data-toggle="modal" data-target="#a{{index}}"/>
+    </div>
+    </br>
+    <!-- footer is used to display role of players -->
+    <footer class="w3-container w3-blue" style="text-align:center">
+        <h5>{{data.player_role}}</h5>
+    </footer>
+</div>
+<!-- div containing modal used to display play details in modal view -->
+<div class="modal fade" id="a{{index}}" role="dialog">
+    <div class="modal-dialog modal-lg modal-md modal-sm modal-xs">
+        <!-- div containing modal content -->
+        <div class="modal-content">
+            <!-- modal header contain the player name -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{data.player_name}}</h4>
+            </div>
+            <!-- modal body contains all the information of selected player -->
+            <div class="modal-body">
+                <table align="center">
+                    <tr>
+                        <td>
+                            <li><b>Role</b> : {{data.player_role}}</li>
+                            <li><b>Batting Style</b> : {{data.player_batting_style}}</li>
+                            <li><b>Bowling Style</b> : {{data.player_bowling_style}}</li>
+                            <li><b>Date of Birth</b> : {{data.player_dob}}</li>
+                            <li><b>Nationality</b> : {{data.player_nationality}}</li>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- footer contains a button close to close modal -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
