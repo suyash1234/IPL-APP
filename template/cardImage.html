@@ -9,7 +9,7 @@
 
     <!-- this div having container used to display images of players -->
     <div class="w3-container" ng-controller="imgCtrl" align="center">
-        <img src="" id="{{data.player_img_url}}" name="{{getUrl(data.player_img_url)}}"
+        <img ng-cache ng-src="{{imgSrc}}" name="{{getUrl(data.player_img_url)}}"
         class="img-responsive imgSet" data-toggle="modal" data-target="#a{{index}}"/>
     </div>
     </br>

@@ -16,7 +16,8 @@ angular.module('myApp').controller('imgCtrl', function($scope) {
         var storage = firebase.storage();
         var pathRef = storage.ref();
         pathRef.child(imagePath).getDownloadURL().then(function(url) {
-            document.getElementById(imagePath).src = url;
+          $scope.imgSrc=url;
+          //  document.getElementById(imagePath).src = url;
         });
     }
 });

@@ -4,7 +4,7 @@
 * purpose : perform routing according to state
 */
 // connecting myApp to the module and inject the services
-var app = angular.module('myApp', ['ui.router', 'firebase', 'angular-carousel-3d']);
+var app = angular.module('myApp', ['ui.router', 'firebase', 'angular-carousel-3d','ngImgCache']);
 // use config to configure different states and pass services in config function
 app.config(function($stateProvider, $urlRouterProvider) {
     // initially app goes to the home page

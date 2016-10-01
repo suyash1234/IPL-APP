@@ -21,6 +21,7 @@
     "javascript-detect-element-resize": "*",
     "modernizr": "*",
     "angular-ui-router": "^0.3.1",
-    "waitForImages": "*"
+    "waitForImages": "*",
+    "imgcache.js": "^1.0.0"
   }
 }
