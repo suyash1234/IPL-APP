@@ -1,3 +1,8 @@
+/**
+* FileName:app.js
+* CreatedBy: Suyash
+* purpose : perform routing according to state
+*/
 // connecting myApp to the module and inject the services
 var app = angular.module('myApp', ['ui.router', 'firebase', 'angular-carousel-3d']);
 // use config to configure different states and pass services in config function
