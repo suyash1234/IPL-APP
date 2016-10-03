@@ -9,7 +9,7 @@
 /*
  bind the controller with the module and inject the services
 */
-angular.module('myApp').controller('homeCtrl', function($firebase, $firebaseObject, $scope, $log) {
+angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log,myCache) {
     /*
     Slides with caption
     create one object and put src and caption in it
@@ -37,12 +37,29 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $firebaseObje
         loop: true
     };
 
+    var cache = myCache.get('teamInfo');
+
+     if (cache) { // If there’s something in the cache, use it!
+       $scope.slides = cache;
+       console.log("cached");
+     }
+     else { // Otherwise, let’s generate a new instance
+       console.log("not cached");
+       $scope.$watch('slides',function(newValue,oldValue,scope){
+         myCache.put("teamInfo", newValue);
+console.log(myCache.info());
+
+       });
+       getDatabase();
+
+     }
+
     /*****
      * make a function named getDatabase
      * this function takes team_info from firebase as a reference
      * push different images of teams in app
      */
-    getDatabase = function() {
+    function getDatabase() {
         /*connect to the firebase and take team-info as reference*/
         var fbref = firebase.database().ref("team_info");
 
@@ -50,7 +67,8 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $firebaseObje
           gives all the details of team-info */
         fbref.on("value", function(obj) {
             /*first make an empty array*/
-            $scope.slides = [];
+            $scope.slides = [];          //  myCache.put(‘teamInfo’, $scope.slides);
+
 
             /*getting all values of obj and put it variable imageTemp*/
             var imageTemp = obj.val();
@@ -83,5 +101,4 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $firebaseObje
             });
         }
         //call the getdatabase function
-    getDatabase();
 });

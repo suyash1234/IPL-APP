@@ -12,8 +12,8 @@
           <!-- link to next page -->
           <!-- use ng-if to compare the currentIndex of image with the carousel index  -->
             <a ng-if="carousel3d.getCurrentIndex() === $index"
-            ui-sref="player({teamname:slide.url})"><img ng-cache ng-src="{{slide.src}}" alt="" /></a>
-            <img ng-if="carousel3d.getCurrentIndex() !== $index" ng-cache ng-src="{{slide.src}}" alt="" />
+            ui-sref="player({teamname:slide.url})"><ui-image data-src="{{slide.src}}" alt="" ></ui-image></a>
+            <ui-image ng-if="carousel3d.getCurrentIndex() !== $index" data-src="{{slide.src}}" alt="" ></ui-image>
             <figcaption ng-bind="slide.caption"></figcaption>
         </figure>
     </div>
