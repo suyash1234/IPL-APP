@@ -9,7 +9,7 @@
 /*
  bind the controller with the module and inject the services
 */
-angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log,myCache) {
+angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log, myCache,MyService) {
     /*
     Slides with caption
     create one object and put src and caption in it
@@ -37,68 +37,38 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log,
         loop: true
     };
 
+    /*get is used to get the new value in myCache*/
     var cache = myCache.get('teamInfo');
 
-     if (cache) { // If there’s something in the cache, use it!
-       $scope.slides = cache;
-       console.log("cached");
-     }
-     else { // Otherwise, let’s generate a new instance
-       console.log("not cached");
-       $scope.$watch('slides',function(newValue,oldValue,scope){
-         myCache.put("teamInfo", newValue);
-console.log(myCache.info());
+    /*If there’s something in the cache, use it!*/
+    if (cache) {
+        $scope.slides = cache;
+        console.log("cached");
+    }
 
-       });
-       getDatabase();
-
-     }
-
-    /*****
-     * make a function named getDatabase
-     * this function takes team_info from firebase as a reference
-     * push different images of teams in app
-     */
-    function getDatabase() {
-        /*connect to the firebase and take team-info as reference*/
-        var fbref = firebase.database().ref("team_info");
-
-        /* use on function to emit an event and passing obj
-          gives all the details of team-info */
-        fbref.on("value", function(obj) {
-            /*first make an empty array*/
-            $scope.slides = [];          //  myCache.put(‘teamInfo’, $scope.slides);
-
-
-            /*getting all values of obj and put it variable imageTemp*/
-            var imageTemp = obj.val();
-
-            /* for loop to get all data into var i from imageTemp*/
-            for (i in imageTemp) {
-                getUrl(imageTemp[i].team_img_url, imageTemp[i].team_name, function(url, caption) {
-
-                    /* using push method to push our data in null slides array*/
-                    $scope.slides.push({
-                        'src': url,
-                        'caption': caption,
-                        'url': caption.replace(/\s+/g, '')
-                    }); /*closing of push method*/
-                }); /*closing of getUrl function*/
-            } /*closing of for in loop*/
+    /*Otherwise,gives a not cached message*/
+    else {
+        console.log("not cached");
+        MyService.getDatabase(function(database){
+          $scope.slides=[];
+          angular.forEach(database,function(value,key){
+                MyService.getUrl(value,function(url, obj) {
+                        /* using push method to push our data in null slides array*/
+                        $scope.slides.push({
+                            'src': url,
+                            'caption': obj.team_name,
+                            'url': obj.team_name.replace(/\s+/g, '')
+                        });
+                    });
+          });
         });
     }
 
-    /*****
-     * call back function having 3 parameters
-     * function to retrieve image url from firebase storage
-     */
-    getUrl = function(imagePath, imageCaption, callback) {
-            //use firebase storage function to get image url from there
-            var storage = firebase.storage();
-            var pathRef = storage.ref();
-            pathRef.child(imagePath).getDownloadURL().then(function(url) {
-                callback(url, imageCaption);
-            });
-        }
+    /*watch service is used to watch the changes in slides and put the new value*/
+    $scope.$watch('slides', function(newValue) {
+        myCache.put("teamInfo", newValue);
+    });
+
+
         //call the getdatabase function
 });
