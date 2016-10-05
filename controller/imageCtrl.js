@@ -8,16 +8,14 @@
 /*bind the controller with the module*/
 angular.module('myApp').controller('imgCtrl', function($scope) {
     //  function called from cardImage html file and pass image path
-    $scope.getUrl = function(imagePath) {
+    $scope.imgUrl = function(obj, callback) {
         // connection with firebase storage
         var storage = firebase.storage();
         var pathRef = storage.ref();
-        pathRef.child(imagePath).getDownloadURL().then(function(url) {
-            //console.log(imagePath);
-            // console.log(url);
-            // $scope.slides.push(url);
-          
-            document.getElementById(imagePath).src = url;
+        pathRef.child(obj.player_img_url).getDownloadURL().then(function(url) {
+
+          callback(url, obj);
+
         });
     }
 });

@@ -9,7 +9,6 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <!-- <script src="bower_components/imgcache.js/js/imgcache.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,6 +18,7 @@
     <link rel="stylesheet" href="external.css">
     <title>IPL Project</title>
 </head>
+
 <!-- Starting of body tag -->
 <!-- use a module myApp -->
 
@@ -26,17 +26,20 @@
     <!-- use ui-view to display our view in this div -->
     <ui-view></ui-view>
 </body>
+<!-- closing of body tag -->
 
+<!-- source files from bower -->
 <script src="bower_components/angular-swipe/dist/angular-swipe.js"></script>
 <script src="bower_components/angular-carousel-3d/dist/carousel-3d.js"></script>
 <script src="bower_components/ng-image-cache/dist/ng-image-cache.js"></script>
-<!-- closing of body tag -->
+
 <!-- source path to the following controllers -->
 <script src="app.js"></script>
 <script src="firebaseConfig.js"></script>
 <script src="controller/home.js"></script>
 <script src="controller/player.js"></script>
-<script src="service/myService.js"></script> -->
+<script src="service/myService.js"></script>
+<script src="service/playerService.js"></script>
 <script src="directive/cardImage.js"></script>
 
 </html>

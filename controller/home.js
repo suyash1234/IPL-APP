@@ -9,7 +9,8 @@
 /*
  bind the controller with the module and inject the services
 */
-angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log, myCache,MyService) {
+angular.module('myApp').controller('homeCtrl', function($firebase, $scope,
+    $log, myCache, MyService) {
     /*
     Slides with caption
     create one object and put src and caption in it
@@ -49,18 +50,27 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log,
     /*Otherwise,gives a not cached message*/
     else {
         console.log("not cached");
-        MyService.getDatabase(function(database){
-          $scope.slides=[];
-          angular.forEach(database,function(value,key){
-                MyService.getUrl(value,function(url, obj) {
-                        /* using push method to push our data in null slides array*/
-                        $scope.slides.push({
-                            'src': url,
-                            'caption': obj.team_name,
-                            'url': obj.team_name.replace(/\s+/g, '')
-                        });
+        /**
+         * use MyService to call getDatabase function
+         * this is a call back function which gives all the data of team_info
+         * iterating database in which all data of team-info will come
+         */
+        MyService.getDatabase(function(database) {
+            $scope.slides = [];
+            for (j in database) {
+
+                /**
+                 * use MyService to call getUrl call back function
+                 */
+                MyService.getUrl(database[j], function(url, obj) {
+                    /* using push method to push our data in null slides array*/
+                    $scope.slides.push({
+                        'src': url,
+                        'caption': obj.team_name,
+                        'url': obj.team_name.replace(/\s+/g, '')
                     });
-          });
+                });
+            }
         });
     }
 
@@ -68,7 +78,4 @@ angular.module('myApp').controller('homeCtrl', function($firebase, $scope, $log,
     $scope.$watch('slides', function(newValue) {
         myCache.put("teamInfo", newValue);
     });
-
-
-        //call the getdatabase function
 });
