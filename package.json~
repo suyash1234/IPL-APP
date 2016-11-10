@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "node server.js",
-    "start": "node server.js",
-     "postinstall":"bower install"
+    "start": "node server.js"
   },
   "author": "suyash",
   "license": "ISC",
@@ -14,7 +13,6 @@
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "path": "^0.12.7",
-	"bower":"0.6.x"
+    "path": "^0.12.7"
   }
 }
