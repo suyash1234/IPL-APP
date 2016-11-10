@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node server.js",
     "start": "node server.js",
-     "postinstall":"bower install && grunt build"
+     "postinstall":"bower install"
   },
   "author": "suyash",
   "license": "ISC",
